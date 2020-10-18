@@ -1,8 +1,8 @@
 <template>
    
    <div class="menu_item"   style="justify-content: flex-end;">
-        <a href="#" @click="isOpen = !isOpen; "><i class="fas fa-plus  fa-2x"></i></a>   
-        
+        <!-- <a href="#" @click="isOpen = !isOpen; "><i class="fas fa-plus  fa-2x"></i></a>    -->
+        <i class="fas fa-plus  fa-2x i" @click="isOpen = !isOpen; "></i>
         <div v-if="isOpen" id="overlay" >
 
            <div class="modal-dialog" style="margin-top: 200px">
@@ -119,5 +119,7 @@
 .in-line{
     align-items: baseline;
 }
-
+.i:hover{
+    cursor: pointer;
+}
 </style>

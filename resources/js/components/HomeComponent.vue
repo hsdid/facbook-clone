@@ -28,9 +28,10 @@
                        <div class="ml-3">
                             <i class="far fa-thumbs-up fa-2x mr-3"></i>
                             
-                            <a href="#" @click="openComment()"><i class="far fa-comment-alt fa-2x mr-3"></i></a>
-                            <a href="#" @click="addToFavorite(article.id, authUser.id)"><i class="far fa-heart fa-2x "></i></a>
-                           
+                            <!-- <a href="#" @click="openComment()"><i class="far fa-comment-alt fa-2x mr-3"></i></a> -->
+                            <i @click="openComment()" class="far fa-comment-alt fa-2x mr-3 i"></i>
+                            <!-- <a href="#" @click="addToFavorite(article.id, authUser.id)"><i class="far fa-heart fa-2x "></i></a> -->
+                            <i class="far fa-heart fa-2x i" @click="addToFavorite(article.id, authUser.id)"></i>
                            
                        </div>
                        <hr>
@@ -143,6 +144,9 @@
     font-size:17px;
     font-weight: 600;
     
+}
+.i:hover{
+    cursor: pointer;
 }
 /* .img{
     

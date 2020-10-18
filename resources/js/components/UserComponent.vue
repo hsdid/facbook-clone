@@ -21,7 +21,8 @@
                                <button :disabled="isFriend" class="btn btn-primary" @click="addToFriend(user.id); friendOrNo()">Add to friend</button>
                                 <button :disabled="!isFriend" class="btn btn-danger mr-4" @click="removeFriend(user.id); friendOrNo()">remove</button>
 
-                                <a href="#" @click="showFavorite()"><i class="far fa-heart fa-2x " ></i></a>
+                                <a v-if="user.id == authUser.id"  href="#" @click="showFavorite()"><i class="far fa-heart fa-2x " ></i></a>
+
                           </div>
                            
 
@@ -53,14 +54,14 @@
                             <hr>
                         <div class="ml-3">
                                 <i class="far fa-thumbs-up fa-2x mr-3"></i>
-                                <i class="far fa-comment-alt fa-2x mr-3"></i>
+                                <i @click="openComment()" class="far fa-comment-alt fa-2x mr-3 i"></i>
                                 
                                 
                                 <a href="" @click="addToFavorite(article.id, authUser.id)"><i class="far fa-heart fa-2x " ></i></a>
                                 
                                 
                         </div>
-                        
+                        <Comment :authUser="authUser.id" :article_id="article.id" :openComment="openComments"/> 
                     </div>
                 </div>
                 <div v-else class="card card-body alert alert-primary">
@@ -89,6 +90,7 @@
                isFriend: false,
                articles:[],
                articles_len: 0,
+               openComments: false
             }
 
            
@@ -208,7 +210,12 @@
                 }).catch(err => {
                     console.log(err);
                 });
+            },
+             openComment(){
+                
+                this.openComments = !this.openComments;
             }
+
            
 
         },
@@ -239,6 +246,9 @@
 .msg_text {
     font-size:14px;
     font-weight: 500;
+}
+.i:hover{
+    cursor: pointer;
 }
 
 

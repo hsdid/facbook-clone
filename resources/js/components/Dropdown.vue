@@ -1,15 +1,16 @@
 <template>
    
     <div class="menu_item"   style="justify-content: flex-end;">
-        <a href="#" @click="isOpen = !isOpen; showFriends()"><i class="fab fa-facebook-messenger fa-2x text-"></i></a>   
+        <!-- <a href="#" @click="isOpen = !isOpen; showFriends()"><i class="fab fa-facebook-messenger fa-2x text-"></i></a>    -->
+        <i class="fab fa-facebook-messenger fa-2x text-" @click="isOpen = !isOpen; showFriends()"></i>
         <transition name="fade" appear="">
             <div class="sub_menu above" v-if="isOpen">
                 <div class="menu_item">
                     <input type="text"  v-model="find_friend" class="search" >
                 </div>
                 <div v-for="(user,i) in filteredList " :key="i" class="menu_item">
-                    <a href="#" @click="write_to(user); get_msg(); isOpen= !isOpen; isUser=true"  >{{ user.name }}</a>
-                    
+                    <!-- <a href="#" @click="write_to(user); get_msg(); isOpen= !isOpen; isUser=true"  >{{ user.name }}</a> -->
+                    <small class="i" @click="write_to(user); get_msg(); isOpen= !isOpen; isUser=true">{{ user.name }}</small>
                 </div>
             </div>
         </transition>
@@ -151,5 +152,11 @@ nav .menu_item .sub_menu {
 .search{
     border: 1px solid white;
     border-radius: 20px;
+}
+small{
+    font-size: 14px;
+}
+.i:hover{
+    cursor: pointer;
 }
 </style>

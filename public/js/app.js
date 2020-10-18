@@ -2059,7 +2059,7 @@ __webpack_require__.r(__webpack_exports__);
       formData.append('user_id', this.authUser);
       formData.append('article_id', this.article_id);
       formData.append('text', this.comment);
-      axios.post('api/comment', formData).then(function (res) {
+      axios.post('http://lcaht.test/api/comment', formData).then(function (res) {
         console.log(res.data);
       })["catch"](function (err) {
         console.log(err);
@@ -2070,7 +2070,7 @@ __webpack_require__.r(__webpack_exports__);
     get_comments: function get_comments(article_id) {
       var _this = this;
 
-      axios.get('api/comments', {
+      axios.get('http://lcaht.test/api/comments', {
         params: {
           article_id: article_id
         }
@@ -2219,6 +2219,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'dropdown',
@@ -2301,6 +2302,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Comment_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Comment.vue */ "./resources/js/components/Comment.vue");
+//
 //
 //
 //
@@ -2482,6 +2484,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'SearchFriend',
   props: ['auth'],
@@ -2606,6 +2609,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['authUser'],
   data: function data() {
@@ -2616,7 +2620,8 @@ __webpack_require__.r(__webpack_exports__);
       friend_id: [],
       isFriend: false,
       articles: [],
-      articles_len: 0
+      articles_len: 0,
+      openComments: false
     };
   },
   methods: {
@@ -2725,6 +2730,9 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (err) {
         console.log(err);
       });
+    },
+    openComment: function openComment() {
+      this.openComments = !this.openComments;
     }
   },
   mounted: function mounted() {
@@ -7299,7 +7307,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#overlay{\n            position: fixed;\n            top:0;\n            bottom: 0;\n            left: 0;\n            right: 0;\n            background: rgba(0, 0, 0, 0.6);\n            z-index: 3;\n}\n.article_form{\n    position: absolute;\n    background-color: #222;\n    top: calc(100% + 18px);\n    left: 50%;\n    transform: translateX(-50%);\n    /* width: max-content; */\n     width: 500px; \n    border-radius: 0px 0px 16px 16px;\n}\n.in-line{\n    align-items: baseline;\n}\n\n", ""]);
+exports.push([module.i, "\n#overlay{\n            position: fixed;\n            top:0;\n            bottom: 0;\n            left: 0;\n            right: 0;\n            background: rgba(0, 0, 0, 0.6);\n            z-index: 3;\n}\n.article_form{\n    position: absolute;\n    background-color: #222;\n    top: calc(100% + 18px);\n    left: 50%;\n    transform: translateX(-50%);\n    /* width: max-content; */\n     width: 500px; \n    border-radius: 0px 0px 16px 16px;\n}\n.in-line{\n    align-items: baseline;\n}\n.i:hover{\n    cursor: pointer;\n}\n", ""]);
 
 // exports
 
@@ -7318,7 +7326,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nnav .menu_item .sub_menu {\r\n    position: absolute;\r\n    background-color: #222;\r\n    top: calc(100% + 18px);\r\n    left: 50%;\r\n    transform: translateX(-50%);\r\n    width: -webkit-max-content;\r\n    width: -moz-max-content;\r\n    width: max-content;\r\n    border-radius: 0px 0px 16px 16px;\n}\n.above { \r\n    z-index: 2;\n}\n.chat {\r\n    position: absolute;\r\n    background-color: #222;\r\n    top: calc(700%);\r\n    left: 50%;\r\n    transform: translateX(-50%);\r\n    /* width: max-content; */\r\n    border-radius: 0px 0px 16px 16px;\r\n    /* display: flex;\r\n    justify-content: flex-end;\r\n    align-items: flex-end; */\n}\n.search{\r\n    border: 1px solid white;\r\n    border-radius: 20px;\n}\r\n", ""]);
+exports.push([module.i, "\nnav .menu_item .sub_menu {\r\n    position: absolute;\r\n    background-color: #222;\r\n    top: calc(100% + 18px);\r\n    left: 50%;\r\n    transform: translateX(-50%);\r\n    width: -webkit-max-content;\r\n    width: -moz-max-content;\r\n    width: max-content;\r\n    border-radius: 0px 0px 16px 16px;\n}\n.above { \r\n    z-index: 2;\n}\n.chat {\r\n    position: absolute;\r\n    background-color: #222;\r\n    top: calc(700%);\r\n    left: 50%;\r\n    transform: translateX(-50%);\r\n    /* width: max-content; */\r\n    border-radius: 0px 0px 16px 16px;\r\n    /* display: flex;\r\n    justify-content: flex-end;\r\n    align-items: flex-end; */\n}\n.search{\r\n    border: 1px solid white;\r\n    border-radius: 20px;\n}\nsmall{\r\n    font-size: 14px;\n}\n.i:hover{\r\n    cursor: pointer;\n}\r\n", ""]);
 
 // exports
 
@@ -7337,7 +7345,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.msg_text[data-v-782dcf83] {\n    font-size:14px;\n    font-weight: 500;\n}\n.msg[data-v-782dcf83] {\n    border: 1px solid white;\n    border-radius: 20px;\n}\n.friend[data-v-782dcf83]{\n    font-size:15px;\n    font-weight: 500;\n    text-decoration: none;\n}\n.header_text[data-v-782dcf83]{\n    font-size:17px;\n    font-weight: 600;\n}\n/* .img{\n    \n} */\n\n", ""]);
+exports.push([module.i, "\n.msg_text[data-v-782dcf83] {\n    font-size:14px;\n    font-weight: 500;\n}\n.msg[data-v-782dcf83] {\n    border: 1px solid white;\n    border-radius: 20px;\n}\n.friend[data-v-782dcf83]{\n    font-size:15px;\n    font-weight: 500;\n    text-decoration: none;\n}\n.header_text[data-v-782dcf83]{\n    font-size:17px;\n    font-weight: 600;\n}\n.i[data-v-782dcf83]:hover{\n    cursor: pointer;\n}\n/* .img{\n    \n} */\n\n", ""]);
 
 // exports
 
@@ -7375,7 +7383,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nnav .menu_item .sub_menu {\r\n    position: absolute;\r\n    background-color: #222;\r\n    top: calc(100% + 18px);\r\n    left: 50%;\r\n    transform: translateX(-50%);\r\n    width: -webkit-max-content;\r\n    width: -moz-max-content;\r\n    width: max-content;\r\n    border-radius: 0px 0px 16px 16px;\n}\n.above { \r\n    z-index: 2;\n}\n.search{\r\n    border: 1px solid white;\r\n    border-radius: 20px;\n}\r\n", ""]);
+exports.push([module.i, "\nnav .menu_item .sub_menu {\r\n    position: absolute;\r\n    background-color: #222;\r\n    top: calc(100% + 18px);\r\n    left: 50%;\r\n    transform: translateX(-50%);\r\n    width: -webkit-max-content;\r\n    width: -moz-max-content;\r\n    width: max-content;\r\n    border-radius: 0px 0px 16px 16px;\n}\n.above { \r\n    z-index: 2;\n}\n.search{\r\n    border: 1px solid white;\r\n    border-radius: 20px;\n}\n.i:hover{\r\n    cursor: pointer;\n}\r\n", ""]);
 
 // exports
 
@@ -7394,7 +7402,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.header_text{\r\n    font-size:17px;\r\n    font-weight: 600;\n}\n.msg_text {\r\n    font-size:14px;\r\n    font-weight: 500;\n}\r\n\r\n\r\n", ""]);
+exports.push([module.i, "\n.header_text{\r\n    font-size:17px;\r\n    font-weight: 600;\n}\n.msg_text {\r\n    font-size:14px;\r\n    font-weight: 500;\n}\n.i:hover{\r\n    cursor: pointer;\n}\r\n\r\n\r\n", ""]);
 
 // exports
 
@@ -39642,18 +39650,14 @@ var render = function() {
       staticStyle: { "justify-content": "flex-end" }
     },
     [
-      _c(
-        "a",
-        {
-          attrs: { href: "#" },
-          on: {
-            click: function($event) {
-              _vm.isOpen = !_vm.isOpen
-            }
+      _c("i", {
+        staticClass: "fas fa-plus  fa-2x i",
+        on: {
+          click: function($event) {
+            _vm.isOpen = !_vm.isOpen
           }
-        },
-        [_c("i", { staticClass: "fas fa-plus  fa-2x" })]
-      ),
+        }
+      }),
       _vm._v(" "),
       _vm.isOpen
         ? _c("div", { attrs: { id: "overlay" } }, [
@@ -39782,19 +39786,15 @@ var render = function() {
       staticStyle: { "justify-content": "flex-end" }
     },
     [
-      _c(
-        "a",
-        {
-          attrs: { href: "#" },
-          on: {
-            click: function($event) {
-              _vm.isOpen = !_vm.isOpen
-              _vm.showFriends()
-            }
+      _c("i", {
+        staticClass: "fab fa-facebook-messenger fa-2x text-",
+        on: {
+          click: function($event) {
+            _vm.isOpen = !_vm.isOpen
+            _vm.showFriends()
           }
-        },
-        [_c("i", { staticClass: "fab fa-facebook-messenger fa-2x text-" })]
-      ),
+        }
+      }),
       _vm._v(" "),
       _c("transition", { attrs: { name: "fade", appear: "" } }, [
         _vm.isOpen
@@ -39829,9 +39829,9 @@ var render = function() {
                 _vm._l(_vm.filteredList, function(user, i) {
                   return _c("div", { key: i, staticClass: "menu_item" }, [
                     _c(
-                      "a",
+                      "small",
                       {
-                        attrs: { href: "#" },
+                        staticClass: "i",
                         on: {
                           click: function($event) {
                             _vm.write_to(user)
@@ -39966,31 +39966,23 @@ var render = function() {
               _c("div", { staticClass: "ml-3" }, [
                 _c("i", { staticClass: "far fa-thumbs-up fa-2x mr-3" }),
                 _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    attrs: { href: "#" },
-                    on: {
-                      click: function($event) {
-                        return _vm.openComment()
-                      }
+                _c("i", {
+                  staticClass: "far fa-comment-alt fa-2x mr-3 i",
+                  on: {
+                    click: function($event) {
+                      return _vm.openComment()
                     }
-                  },
-                  [_c("i", { staticClass: "far fa-comment-alt fa-2x mr-3" })]
-                ),
+                  }
+                }),
                 _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    attrs: { href: "#" },
-                    on: {
-                      click: function($event) {
-                        return _vm.addToFavorite(article.id, _vm.authUser.id)
-                      }
+                _c("i", {
+                  staticClass: "far fa-heart fa-2x i",
+                  on: {
+                    click: function($event) {
+                      return _vm.addToFavorite(article.id, _vm.authUser.id)
                     }
-                  },
-                  [_c("i", { staticClass: "far fa-heart fa-2x " })]
-                )
+                  }
+                })
               ]),
               _vm._v(" "),
               _c("hr"),
@@ -40122,19 +40114,15 @@ var render = function() {
     "div",
     { staticClass: "menu_item" },
     [
-      _c(
-        "a",
-        {
-          attrs: { href: "#" },
-          on: {
-            click: function($event) {
-              _vm.isOpen = !_vm.isOpen
-              _vm.getUsers()
-            }
+      _c("i", {
+        staticClass: "fas fa-search fa-2x i",
+        on: {
+          click: function($event) {
+            _vm.isOpen = !_vm.isOpen
+            _vm.getUsers()
           }
-        },
-        [_c("i", { staticClass: "fas fa-search fa-2x" })]
-      ),
+        }
+      }),
       _vm._v(" "),
       _c("transition", { attrs: { name: "fade", appear: "" } }, [
         _vm.isOpen
@@ -40254,18 +40242,20 @@ var render = function() {
               [_vm._v("remove")]
             ),
             _vm._v(" "),
-            _c(
-              "a",
-              {
-                attrs: { href: "#" },
-                on: {
-                  click: function($event) {
-                    return _vm.showFavorite()
-                  }
-                }
-              },
-              [_c("i", { staticClass: "far fa-heart fa-2x " })]
-            )
+            _vm.user.id == _vm.authUser.id
+              ? _c(
+                  "a",
+                  {
+                    attrs: { href: "#" },
+                    on: {
+                      click: function($event) {
+                        return _vm.showFavorite()
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "far fa-heart fa-2x " })]
+                )
+              : _vm._e()
           ])
         ])
       ]),
@@ -40338,7 +40328,14 @@ var render = function() {
                   _c("div", { staticClass: "ml-3" }, [
                     _c("i", { staticClass: "far fa-thumbs-up fa-2x mr-3" }),
                     _vm._v(" "),
-                    _c("i", { staticClass: "far fa-comment-alt fa-2x mr-3" }),
+                    _c("i", {
+                      staticClass: "far fa-comment-alt fa-2x mr-3 i",
+                      on: {
+                        click: function($event) {
+                          return _vm.openComment()
+                        }
+                      }
+                    }),
                     _vm._v(" "),
                     _c(
                       "a",
@@ -40355,8 +40352,17 @@ var render = function() {
                       },
                       [_c("i", { staticClass: "far fa-heart fa-2x " })]
                     )
-                  ])
-                ]
+                  ]),
+                  _vm._v(" "),
+                  _c("Comment", {
+                    attrs: {
+                      authUser: _vm.authUser.id,
+                      article_id: article.id,
+                      openComment: _vm.openComments
+                    }
+                  })
+                ],
+                1
               )
             }),
             0

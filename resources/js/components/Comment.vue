@@ -57,7 +57,7 @@
                 formData.append('article_id', this.article_id);
                 formData.append('text', this.comment);
 
-               axios.post('api/comment',formData)
+               axios.post('http://lcaht.test/api/comment',formData)
                .then(res => {
                    console.log(res.data);
                }).catch(err => {
@@ -71,7 +71,7 @@
             get_comments(article_id){
                 
                 
-                axios.get('api/comments',{
+                axios.get('http://lcaht.test/api/comments',{
                     params: {
                         article_id : article_id
                     }

@@ -1,7 +1,8 @@
 <template>
    
      <div class="menu_item">
-        <a href="#"  @click="isOpen = !isOpen; getUsers();"><i class="fas fa-search fa-2x" ></i></a>   
+        <!-- <a href="#"  @click="isOpen = !isOpen; getUsers();"><i class="fas fa-search fa-2x" ></i></a>  -->
+          <i class="fas fa-search fa-2x i" @click="isOpen = !isOpen; getUsers();"></i>
         <transition name="fade" appear="">
             <div class="sub_menu above" v-if="isOpen" style="margin-left:50px">
                 <div class="menu_item"> 
@@ -86,5 +87,8 @@ nav .menu_item .sub_menu {
 .search{
     border: 1px solid white;
     border-radius: 20px;
+}
+.i:hover{
+    cursor: pointer;
 }
 </style>
