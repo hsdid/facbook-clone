@@ -1,5 +1,6 @@
 Facbook Clone Application with Laravel and Vue
 Application options
+
 1.Register/Login to application.
 
 2.Looking for friends.
